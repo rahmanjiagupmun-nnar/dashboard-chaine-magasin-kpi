@@ -3,11 +3,13 @@ import plotly.graph_objects as go
 import plotly.express as px
 from dash import Dash, html, dcc, Input, Output
 import dash_bootstrap_components as dbc
-import numpy as np
+
+url = "https://raw.githubusercontent.com/rahmanjiagupmun-nnar/dashboard-chaine-magasin-kpi/main/data_dashboard_large.xlsx"
+
 
 # ===== CHARGEMENT DES DONNÉES =====
 try:
-    df = pd.read_excel('data_dashboard_large.xlsx')
+    df = pd.read_excel(url)
     df.columns = df.columns.str.strip()
     
     # Conversion de la date
@@ -374,4 +376,4 @@ def update_dashboard(magasin, categorie, paiement):
             fig1, fig2, fig3, fig4, fig5, fig6, mode_pop, fig7, fig8)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    app.run(host="0.0.0.0", port=10000)
